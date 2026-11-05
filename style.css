@@ -65,14 +65,7 @@ img {
   height: auto;
 }
 
-.profile-pic {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-.utm-logo {
+.logo-utm {
   width: 250px;
   height: auto;
   margin-top: 20px;
