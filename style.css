@@ -2,21 +2,386 @@
 body {
   margin: 0;
   color: #1f2937;
-  background: #f5f7fa;
+  background: #f7eef1;
   font-family: Arial, sans-serif;
   line-height: 1.6;
 }
-header, main, footer {
-  width: min(960px, 92%);
-  margin: auto;
+/* Sidebar */
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 240px;
+  height: 100vh;
+  padding: 40px 25px;
+  background: #fffaf7;
+  border-right: 1px solid #e5e7eb;
 }
-header { padding: 48px 0 24px; }
-nav { display: flex; flex-wrap: wrap; gap: 16px; }
+
+header h1 {
+  margin-bottom: 8px;
+  color: #8a1538;
+}
+
+header p {
+  color: #4b5563;
+  font-size: 14px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+nav a {
+  color: #374151;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #8a1538;
+}
+
+/* Main content */
+main {
+  margin-left: 240px;
+  padding: 40px;
+  max-width: 1000px;
+}
+
 section {
-  margin: 20px 0;
-  padding: 24px;
-  background: white;
+  margin: 0 0 25px;
+  padding: 30px;
+  background: #fffaf7;
   border-radius: 12px;
 }
-img { max-width: 100%; height: auto; }
-a { color: #8a1538; }
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.profile-pic {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.utm-logo {
+  width: 250px;
+  height: auto;
+  margin-top: 20px;
+}
+
+a {
+  color: #8a1538;
+}
+
+/* Footer */
+footer {
+  margin-left: 240px;
+  padding: 20px 40px;
+}
+.profile-intro {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin: 25px 0 35px;
+}
+
+.profile-text h1 {
+  margin: 0 0 10px;
+}
+
+.profile-text h3 {
+  margin: 0;
+  color: #4b5563;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+/* Dark Mode Toggle */
+.theme-toggle-container {
+  margin-top: 45px;
+  text-align: center;
+}
+
+.theme-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  color: #374151;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+/* =========================
+   MOBILE RESPONSIVE DESIGN
+   ========================= */
+
+@media (max-width: 768px) {
+
+  /* Sidebar becomes normal top section */
+  header {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 30px 20px;
+    text-align: center;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  header h1 {
+    font-size: 28px;
+  }
+
+  header p {
+    font-size: 14px;
+  }
+
+  /* Navigation becomes horizontal */
+  nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 18px;
+    margin-top: 25px;
+  }
+
+  nav a {
+    font-size: 14px;
+  }
+
+  /* Dark mode toggle */
+  .theme-toggle-container {
+    margin-top: 25px;
+  }
+
+  /* Main content */
+  main {
+    margin-left: 0;
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  section {
+    padding: 22px;
+    border-radius: 12px;
+  }
+
+  /* Profile */
+  .profile-intro {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profile-text h1 {
+    font-size: 26px;
+  }
+
+  .profile-text h3 {
+    font-size: 16px;
+  }
+
+  /* Selected Work */
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .work-card {
+    padding: 22px;
+  }
+
+  /* Footer */
+  footer {
+    margin-left: 0;
+    padding: 20px;
+    text-align: center;
+  }
+}
+.theme-label span:first-child {
+  font-size: 18px;
+}
+
+/* Toggle switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 86px;
+  height: 38px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: #d8e8df;
+  border: 3px solid #9acbb7;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  left: 3px;
+  top: 2px;
+  background: #9acbb7;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.switch input:checked + .slider {
+  background: #3b3440;
+  border-color: #8a1538;
+}
+/* Dark Mode */
+body.dark-mode {
+  background: #17151a;
+  color: #f3f0f2;
+}
+
+body.dark-mode header {
+  background: #211e24;
+  border-right-color: #38333b;
+}
+
+body.dark-mode header h1 {
+  color: #c04a70;
+}
+
+body.dark-mode header p,
+body.dark-mode .theme-label,
+body.dark-mode .profile-text h3 {
+  color: #c4bec5;
+}
+
+body.dark-mode nav a {
+  color: #e5dfe4;
+}
+
+body.dark-mode nav a:hover {
+  color: #c04a70;
+}
+
+body.dark-mode section {
+  background: #211e24;
+}
+
+body.dark-mode a {
+  color: #c04a70;
+}
+
+body.dark-mode footer {
+  color: #c4bec5;
+}
+.switch input:checked + .slider::before {
+  transform: translateX(48px);
+  background: #c04a70;
+}
+/* Selected Work Cards */
+
+.section-intro {
+  color: #4b5563;
+  margin-bottom: 30px;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.work-card {
+  padding: 25px;
+  background: #fffdfb;
+  border: 1px solid #eadde1;
+  border-radius: 14px;
+  transition: 0.3s;
+}
+
+.work-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(138, 21, 56, 0.08);
+}
+
+.work-number {
+  font-size: 13px;
+  font-weight: bold;
+  color: #8a1538;
+}
+
+.work-card h3 {
+  margin: 10px 0;
+  color: #1f2937;
+}
+
+.work-card p {
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.work-status {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 5px 12px;
+  background: #f7e6eb;
+  color: #8a1538;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.work-meta {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid #eadde1;
+  color: #6b7280;
+  font-size: 12px;
+}
+body.dark-mode .section-intro {
+  color: #c4bec5;
+}
+
+body.dark-mode .work-card {
+  background: #242127;
+  border-color: #38333b;
+}
+
+body.dark-mode .work-card h3 {
+  color: #f3f0f2;
+}
+
+body.dark-mode .work-card p {
+  color: #c4bec5;
+}
+
+body.dark-mode .work-meta {
+  border-top-color: #38333b;
+  color: #aaa3ac;
+}
+
+body.dark-mode .work-status {
+  background: #3b2831;
+  color: #c04a70;
